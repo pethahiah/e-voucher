@@ -10,7 +10,19 @@ class Merchant extends Model
 {
     use HasFactory, Softdeletes;
 
-
+    protected $fillable = [
+        'name',
+        'phone',
+        'store_name',
+        'store_description',
+        'address',
+        'state',
+        'country',
+        'city',
+        'image',
+        'longitude',
+        'latitude',
+    ];
 
     public function vouchers(): \Illuminate\Database\Eloquent\Relations\HasMany
     {

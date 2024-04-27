@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('validity_period');
             $table->integer('limit');
             $table->enum('type', ['one_time', 'multiple_time'])->default('one_time');
+            $table->enum('code_generation_method', ['sms', 'qr_code'])->default('qr_code');
             $table->softDeletes();
             $table->timestamps();
 

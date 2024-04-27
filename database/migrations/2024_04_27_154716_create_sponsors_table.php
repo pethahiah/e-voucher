@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('merchants', function (Blueprint $table) {
+        Schema::create('sponsors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('address');
-            $table->string('phone')->unique();
-            $table->string('store_name')->nullable();
-            $table->string('store_description')->nullable();
+            $table->string('sponsor_name')->nullable();
+            $table->string('sponsor_registration_number')->nullable();
+            $table->string('sponsor_description')->nullable();
             $table->string('address')->nullable();
             $table->string('state')->nullable();
             $table->string('country')->nullable();
@@ -27,10 +25,19 @@ return new class extends Migration
             $table->string('longitude')->nullable();
             $table->string('latitude')->nullable();
             $table->string('image')->nullable();
+            $table->boolean('isSponsorVerified')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
     }
 
-
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('sponsors');
+    }
 };

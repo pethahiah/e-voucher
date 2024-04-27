@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('beneficiaries', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('state');
-            $table->string('phone');
+            $table->string('name')->nullable();
+            $table->string('state')->nullable();
+            $table->string('phone')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

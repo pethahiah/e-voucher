@@ -6,15 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Beneficiary extends Model
+class Sponsor extends Model
 {
     use HasFactory, SoftDeletes;
-
     protected $fillable = [
-        'name',
-        'phone',
-        'store_name',
-        'store_description',
+        'sponsor_name',
+        'sponsor_registration_number',
+        'sponsor_description',
+        'isSponsorVerified',
         'address',
         'state',
         'country',
@@ -24,8 +23,5 @@ class Beneficiary extends Model
         'latitude',
     ];
 
-    public function vouchers(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(Voucher::class);
-    }
+
 }
