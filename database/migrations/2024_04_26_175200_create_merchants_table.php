@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('store_name')->nullable();
             $table->string('store_description')->nullable();
-            $table->string('address')->nullable();
             $table->string('state')->nullable();
             $table->string('country')->nullable();
             $table->string('city')->nullable();

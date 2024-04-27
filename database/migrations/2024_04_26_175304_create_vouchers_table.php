@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateVouchersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('vouchers', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
-            $table->integer('beneficiary_id')->unsigned();
-            $table->integer('merchant_id')->unsigned();
-            $table->string('validity_period');
-            $table->integer('limit');
-            $table->enum('type', ['one_time', 'multiple_time'])->default('one_time');
-            $table->enum('code_generation_method', ['sms', 'qr_code'])->default('qr_code');
+            $table->string('code')->nullable();
+            $table->unsignedBigInteger('beneficiary_id')->nullable();
+            $table->unsignedBigInteger('merchant_id')->nullable();
+            $table->string('validity_period')->nullable();
+            $table->integer('limit')->nullable();
+            $table->enum('type', ['one_time', 'multiple_time'])->default('one_time')->nullable();
+            $table->enum('code_generation_method', ['sms', 'qr_code'])->default('qr_code')->nullable();
             $table->softDeletes();
             $table->timestamps();
 
@@ -30,5 +30,13 @@ return new class extends Migration
         });
     }
 
-
-};
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('vouchers');
+    }
+}
